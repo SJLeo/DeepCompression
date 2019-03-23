@@ -128,7 +128,7 @@ def saveQuantizeModel(codebook, maskcode, filename, total_layers):
     quantizeModel = {}
     for layer in total_layers:
         quantizeModel[layer+'_codebook'] = np.float32(codebook[layer])
-        quantizeModel[layer + '_maskcode'] = np.int8(maskcode[layer])
+        quantizeModel[layer + '_maskcode'] = np.uint8(maskcode[layer])
         # quantizeModel[layer + '_bias'] = np.float32(state_dict[layer+'.bias'].data)
 
     pickle.dump(quantizeModel,open(os.path.join('./bin',filename+'.bin'),'wb'))
